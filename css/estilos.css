@@ -1,0 +1,237 @@
+body{
+
+margin:0;
+font-family:Arial;
+color:white;
+overflow-x:hidden;
+
+animation:fade 0.8s;
+
+}
+
+/* GALAXIA */
+
+#galaxy{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-2;
+
+background:radial-gradient(circle,#0d1b2a,#000);
+
+}
+
+/* PLANETAS */
+
+.planeta{
+
+position:absolute;
+border-radius:50%;
+animation:flotar 10s infinite;
+
+}
+
+.planeta1{
+
+width:80px;
+height:80px;
+
+background:radial-gradient(circle,#ff00cc,#330033);
+
+top:20%;
+left:10%;
+
+}
+
+.planeta2{
+
+width:120px;
+height:120px;
+
+background:radial-gradient(circle,#00ccff,#003366);
+
+bottom:10%;
+right:15%;
+
+}
+
+@keyframes flotar{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+
+}
+
+/* HEADER */
+
+header{
+
+display:flex;
+justify-content:space-between;
+padding:20px;
+
+}
+
+/* NEON */
+
+.neon{
+
+text-shadow:
+0 0 5px #fff,
+0 0 10px #ff00ff,
+0 0 20px #ff00ff,
+0 0 40px #ff00ff;
+
+animation:rebote 2s infinite;
+
+}
+
+@keyframes rebote{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+
+}
+
+/* CURSOS */
+
+.cursos{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+padding:40px;
+
+}
+
+.curso{
+
+background:rgba(255,255,255,0.1);
+padding:25px;
+border-radius:15px;
+
+transition:0.4s;
+
+backdrop-filter:blur(10px);
+
+}
+
+.curso:hover{
+
+transform:rotateY(10deg) rotateX(10deg) scale(1.05);
+
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+
+}
+
+/* BOTONES */
+
+button{
+
+padding:10px;
+border:none;
+
+background:#ff00cc;
+
+color:white;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+/* FORMULARIOS */
+
+.formulario{
+
+width:300px;
+
+margin:auto;
+margin-top:150px;
+
+background:rgba(255,255,255,0.1);
+
+padding:30px;
+
+border-radius:15px;
+
+display:flex;
+flex-direction:column;
+gap:10px;
+
+animation:entrada 1s;
+
+}
+
+@keyframes entrada{
+
+from{
+
+opacity:0;
+transform:translateY(-40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* CARRITO FLOTANTE */
+
+.carrito-float{
+
+position:fixed;
+
+bottom:30px;
+right:30px;
+
+background:#ff00cc;
+
+padding:18px;
+
+font-size:25px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+}
+
+.carrito-float span{
+
+position:absolute;
+
+top:-5px;
+right:-5px;
+
+background:red;
+
+padding:4px 8px;
+
+border-radius:50%;
+
+}
+
+/* TRANSICION */
+
+@keyframes fade{
+
+from{opacity:0}
+to{opacity:1}
+
+}
