@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<title>Cursos Galaxy</title>
+
+<link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+<canvas id="galaxy"></canvas>
+
+<div class="planeta planeta1"></div>
+<div class="planeta planeta2"></div>
+
+<header>
+
+<h1 class="neon">Galaxy Cursos</h1>
+
+<nav>
+
+<a href="login.html">Login</a>
+<a href="registro.html">Registro</a>
+<a href="carrito.html">Carrito</a>
+
+</nav>
+
+</header>
+
+<section class="cursos">
+
+<div class="curso">
+<h3>HTML</h3>
+<p>$15</p>
+<button onclick="agregarCarrito('HTML',15)">Agregar</button>
+</div>
+
+<div class="curso">
+<h3>CSS</h3>
+<p>$15</p>
+<button onclick="agregarCarrito('CSS',15)">Agregar</button>
+</div>
+
+<div class="curso">
+<h3>JavaScript</h3>
+<p>$15</p>
+<button onclick="agregarCarrito('JavaScript',15)">Agregar</button>
+</div>
+
+<div class="curso">
+<h3>Python</h3>
+<p>$15</p>
+<button onclick="agregarCarrito('Python',15)">Agregar</button>
+</div>
+
+</section>
+
+<div class="carrito-float" onclick="location.href='carrito.html'">
+🛒
+<span id="contador">0</span>
+</div>
+
+<script src="js/carrito.js"></script>
+
+<script>
+
+const canvas = document.getElementById("galaxy");
+const ctx = canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[]
+let shooting=[]
+
+for(let i=0;i<250;i++){
+
+stars.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2,
+speed:Math.random()*0.4
+
+})
+
+}
+
+setInterval(()=>{
+
+shooting.push({
+
+x:Math.random()*canvas.width,
+y:0,
+length:80,
+speed:6
+
+})
+
+},3000)
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="white"
+
+stars.forEach(s=>{
+
+ctx.beginPath()
+ctx.arc(s.x,s.y,s.size,0,Math.PI*2)
+ctx.fill()
+
+s.y+=s.speed
+
+if(s.y>canvas.height){
+
+s.y=0
+s.x=Math.random()*canvas.width
+
+}
+
+})
+
+shooting.forEach((s,i)=>{
+
+ctx.beginPath()
+ctx.moveTo(s.x,s.y)
+ctx.lineTo(s.x-80,s.y+80)
+ctx.strokeStyle="white"
+ctx.stroke()
+
+s.x+=s.speed
+s.y+=s.speed
+
+if(s.y>canvas.height){
+
+shooting.splice(i,1)
+
+}
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+</script>
+
+</body>
+</html>
